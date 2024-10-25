@@ -101,10 +101,19 @@ int main(void)
   {
 	  //ex1
 	  	if(flag[0] == 1){
-	  	  num1--; num2--;
-	  	  updateClockBuffer(num1, num2);
-	  	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_2);
-	  	  setTimer(0, 1000);
+	  		num1--; num2--;
+	  	  	updateClockBuffer(num1, num2);
+
+	  	  	HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_2);
+
+			HAL_GPIO_TogglePin(R0_GPIO_Port, R0_Pin);
+			HAL_GPIO_TogglePin(Y0_GPIO_Port, Y0_Pin);
+			HAL_GPIO_TogglePin(G0_GPIO_Port, G0_Pin);
+
+			HAL_GPIO_TogglePin(R1_GPIO_Port, R1_Pin);
+			HAL_GPIO_TogglePin(Y1_GPIO_Port, Y1_Pin);
+			HAL_GPIO_TogglePin(G1_GPIO_Port, G1_Pin);
+			setTimer(0, 1000);
 	  	}
 	  	if(flag[1] == 1){
 	  		setTimer(1, 250);
