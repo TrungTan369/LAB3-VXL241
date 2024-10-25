@@ -9,7 +9,6 @@
 #define INC_TIMER_H_
 
 #include "main.h"
-#include "input_reading.h"
 
 extern int counter[2];   // blink dot 1hz
 extern int flag[2];
