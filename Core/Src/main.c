@@ -19,10 +19,9 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "fsm.h"
+#include "fsm_auto.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -43,7 +42,7 @@
 TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN PV */
-int num1, num2;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -94,10 +93,12 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  status = init;
+  setTimer(0, 3000);
   while (1)
   {
 	  //ex1
-	  fsm_auto();
+	  fsm_auto_run();
 	  //fsm_manual();
     /* USER CODE END WHILE */
 
