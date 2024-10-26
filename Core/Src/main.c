@@ -21,6 +21,7 @@
 #include "main.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+//#include "global.h"
 #include "fsm_auto.h"
 /* USER CODE END Includes */
 
@@ -94,12 +95,12 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   status = init;
-  setTimer(0, 3000);
+  //setTimer(0, 3000);
   while (1)
   {
-	  //ex1
-	  fsm_auto_run();
+	  //fsm_auto_run();
 	  //fsm_manual();
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
