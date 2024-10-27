@@ -94,12 +94,10 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  status = init;
-  //setTimer(0, 3000);
   while (1)
   {
 	  //fsm_auto_run();
-	  //fsm_manual();
+	  //fsm_setting();
 
     /* USER CODE END WHILE */
 

@@ -12,6 +12,12 @@
 
 #define NORMAL_STATE 1
 #define PRESS_STATE 0
+
+extern int buttonFlag1;
+extern int buttonFlag2;
+extern int buttonFlag3;
 void getKeyinput();
 void supKeyProcess();
+int isButtonPress();
+
 #endif /* INC_BUTTON_H_ */

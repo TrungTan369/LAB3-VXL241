@@ -10,6 +10,7 @@ C_SRCS += \
 ../Core/Src/global.c \
 ../Core/Src/led_display.c \
 ../Core/Src/main.c \
+../Core/Src/setTimeTraffic.c \
 ../Core/Src/stm32f1xx_hal_msp.c \
 ../Core/Src/stm32f1xx_it.c \
 ../Core/Src/syscalls.c \
@@ -23,6 +24,7 @@ OBJS += \
 ./Core/Src/global.o \
 ./Core/Src/led_display.o \
 ./Core/Src/main.o \
+./Core/Src/setTimeTraffic.o \
 ./Core/Src/stm32f1xx_hal_msp.o \
 ./Core/Src/stm32f1xx_it.o \
 ./Core/Src/syscalls.o \
@@ -36,6 +38,7 @@ C_DEPS += \
 ./Core/Src/global.d \
 ./Core/Src/led_display.d \
 ./Core/Src/main.d \
+./Core/Src/setTimeTraffic.d \
 ./Core/Src/stm32f1xx_hal_msp.d \
 ./Core/Src/stm32f1xx_it.d \
 ./Core/Src/syscalls.d \

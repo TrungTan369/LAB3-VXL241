@@ -6,5 +6,6 @@
  */
 #include "global.h"
 
-int status = 0;
-
+int status_0 = init;
+int status_1 = init;
+int preStatus = 0;

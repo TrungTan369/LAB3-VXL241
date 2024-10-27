@@ -10,8 +10,8 @@
 
 #include "main.h"
 
-extern int counter[2];   // blink dot 1hz
-extern int flag[2];
+extern int counter[4];   // blink dot 1hz
+extern int flag[4];
 
 void setTimer(int, int);
 void timer_run();
