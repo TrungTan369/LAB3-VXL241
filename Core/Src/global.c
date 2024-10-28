@@ -8,7 +8,6 @@
 
 int STATUS_LINE1 = auto_init; // BEGIN WITH AUTO MODE
 int STATUS_LINE2 = auto_init;  // BEGIN WITH AUTO MODE
-int auto_mode = 1;
 
 int SETTING_STATE = -1; // BEGIN WITHOUT SETTING
 int setting_mode = 0;  // FLAG SETTING

@@ -10,7 +10,7 @@ int count0 = 0;
 int count1= 0;
 
 void fsm_auto_run(){
-	// ---------- CHECK MANUAL (HIGHEST PRIORITY) ---------------
+	// ---------- CHECK MANUAL ---------------
 	if(manual_mode == 1) return;
 	// ------ CHECK SETTING -------------
 	if(setting_mode == 1) return;
@@ -36,7 +36,7 @@ void fsm_auto_run(){
 			setTimer(3, 250);
 			return;
 		case red:
-			HAL_GPIO_WritePin(R0_GPIO_Port, R0_Pin, SETTING_STATE);
+			HAL_GPIO_WritePin(R0_GPIO_Port, R0_Pin, SET);
 			HAL_GPIO_WritePin(Y0_GPIO_Port, Y0_Pin, RESET);
 			HAL_GPIO_WritePin(G0_GPIO_Port, G0_Pin, RESET);
 			if(flag[0] == 1){
@@ -49,7 +49,7 @@ void fsm_auto_run(){
 		case green:
 			HAL_GPIO_WritePin(R0_GPIO_Port, R0_Pin, RESET);
 			HAL_GPIO_WritePin(Y0_GPIO_Port, Y0_Pin, RESET);
-			HAL_GPIO_WritePin(G0_GPIO_Port, G0_Pin, SETTING_STATE);
+			HAL_GPIO_WritePin(G0_GPIO_Port, G0_Pin, SET);
 			if(flag[0] == 1){
 				STATUS_LINE1 = yellow;
 				count0 = timeYellow/1000;
@@ -59,7 +59,7 @@ void fsm_auto_run(){
 			break;
 		case yellow:
 			HAL_GPIO_WritePin(R0_GPIO_Port, R0_Pin, RESET);
-			HAL_GPIO_WritePin(Y0_GPIO_Port, Y0_Pin, SETTING_STATE);
+			HAL_GPIO_WritePin(Y0_GPIO_Port, Y0_Pin, SET);
 			HAL_GPIO_WritePin(G0_GPIO_Port, G0_Pin, RESET);
 			if(flag[0] == 1){
 				STATUS_LINE1 = red;
@@ -108,15 +108,14 @@ void fsm_auto_run(){
 		default:
 			break;
 	}
-
-	if(flag[3] == 1){
-		setTimer(3, 250);
-		Scan7SEG();
-	}
 	if(flag[2] == 1){
 		setTimer(2, 1000);
 		count0 --; count1 --;
 		updateClockBuffer(count0, count1);
+	}
+	if(flag[3] == 1){
+		setTimer(3, 250);
+		Scan7SEG();
 	}
 }
 

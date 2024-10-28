@@ -13,7 +13,7 @@
 #include "button.h"
 #include "led_display.h"
 
-// --- AUTO --------
+// --- AUTO MODE--------
 #define auto_init 0
 #define red 1  // AUTO RED
 #define yellow 2  // AUTO YELLOW
@@ -28,7 +28,7 @@ extern int STATUS_LINE2;  // LINE 2
 #define LINE2_GO 2
 extern int MANUAL_STATE;
 extern int manual_mode;  // FLAG MANUAL
-//----SETTING -------
+//----SETTING MODE-------
 #define setting_init 0
 #define setRed 1
 #define setYellow 2

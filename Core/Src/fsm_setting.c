@@ -10,6 +10,9 @@
 
 
 void fsm_setting(){
+	// ---------- CHECK MANUAL (HIGHEST PRIORITY) ---------------
+	if(manual_mode == 1) return;
+
 	if(isButtonPress1() == 1){
 		HAL_GPIO_WritePin(R0_GPIO_Port, R0_Pin, RESET);
 		HAL_GPIO_WritePin(Y0_GPIO_Port, Y0_Pin, RESET);
@@ -20,10 +23,6 @@ void fsm_setting(){
 		setting_mode = 1;
 		updateClockBuffer(0, 0);
 		SETTING_STATE++;
-	}
-	if(setting_mode == 1){
-		fsm_setting();
-		return;
 	}
 	switch(SETTING_STATE){
 		case setting_init:

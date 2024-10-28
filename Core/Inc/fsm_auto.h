@@ -11,6 +11,6 @@
 #include "global.h"
 
 void fsm_auto_run();
-void fsm_setting();
+
 
 #endif /* INC_FSM_AUTO_H_ */
