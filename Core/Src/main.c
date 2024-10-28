@@ -22,7 +22,6 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "global.h"
-
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
