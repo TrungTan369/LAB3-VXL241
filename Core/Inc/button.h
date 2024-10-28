@@ -16,8 +16,8 @@
 extern int buttonFlag1;
 extern int buttonFlag2;
 extern int buttonFlag3;
+
 void getKeyinput();
-void supKeyProcess();
 int isButtonPress();
 
 #endif /* INC_BUTTON_H_ */

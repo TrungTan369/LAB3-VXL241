@@ -10,7 +10,7 @@
 
 #include "global.h"
 
-extern int timeRed, timeYellow, timeGreen;
+
 void fsm_auto_run();
 void setup();
 #endif /* INC_FSM_AUTO_H_ */

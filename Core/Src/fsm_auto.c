@@ -6,12 +6,10 @@
  */
 #include "fsm_auto.h"
 
-int timeRed = 15000;
-int timeYellow = 5000;
-int timeGreen = 10000;
+
 int count0 = 0;
 int count1= 0;
-int setting = 0;
+
 void fsm_auto_run(){
 	if(setting == 1) return;
 	switch (status_0) {   // LINE 1
@@ -117,7 +115,7 @@ void fsm_auto_run(){
 	if(flag[2] == 1){
 		setTimer(2, 1000);
 		count0 --; count1 --;
-		HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_2);
+		//HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_2);
 		updateClockBuffer(count0, count1);
 	}
 }

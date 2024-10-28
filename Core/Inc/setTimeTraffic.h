@@ -10,9 +10,11 @@
 
 #include "global.h"
 
+#define begin 0
 #define setRed 1
 #define setYellow 2
 #define setGreen 3
+#define checkout 4
 
 extern int key;
 void set();

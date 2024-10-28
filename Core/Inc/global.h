@@ -19,9 +19,10 @@
 #define green 3
 #define stop 4
 
+extern int timeRed, timeYellow, timeGreen; // TIME LED ON
 extern int setting; //mode setting
-extern int preStatus;
-extern int status_0;
-extern int status_1;
+extern int preStatus; // mode stop
+extern int status_0;  // LINE 1
+extern int status_1;  // LINE 2
 
 #endif /* INC_GLOBAL_H_ */

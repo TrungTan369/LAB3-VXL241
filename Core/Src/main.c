@@ -23,6 +23,7 @@
 /* USER CODE BEGIN Includes */
 //#include "global.h"
 #include "fsm_auto.h"
+#include "setTimeTraffic.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -96,8 +97,8 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  //fsm_auto_run();
-	  //fsm_setting();
+	  fsm_auto_run();
+	  fsm_setting();
 
     /* USER CODE END WHILE */
 
