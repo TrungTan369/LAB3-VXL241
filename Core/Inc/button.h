@@ -18,6 +18,8 @@ extern int buttonFlag2;
 extern int buttonFlag3;
 
 void getKeyinput();
-int isButtonPress();
+int isButtonPress1();
+int isButtonPress2();
+int isButtonPress3();
 
 #endif /* INC_BUTTON_H_ */

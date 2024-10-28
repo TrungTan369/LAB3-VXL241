@@ -42,7 +42,7 @@ void getKeyinput(){
 			key1_temp3 = key1_temp2;
 			if(key1_temp2 == PRESS_STATE){
 				buttonFlag1 = 1;
-				//HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_2); // DEBUG
+				HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_2); // DEBUG
 				timePress = 200;
 			}
 		}
@@ -61,8 +61,8 @@ void getKeyinput(){
 		if(key2_temp3 != key2_temp2){
 			key2_temp3 = key2_temp2;
 			if(key2_temp2 == PRESS_STATE){
-				buttonFlag2 = 2;
-				//HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_2); // DEBUG
+				buttonFlag2 = 1;
+				HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_2); // DEBUG
 				timePress = 200;
 			}
 		}
@@ -75,32 +75,45 @@ void getKeyinput(){
 		}
 	}
 	// ----- PROCESS BUTTON 3 -----------
-//	key3_temp0 = key3_temp1;
-//	key3_temp1 = key3_temp2;
-//	key3_temp2 = HAL_GPIO_ReadPin(BUTTON_3_GPIO_Port, BUTTON_3_Pin);
-//	if((key3_temp0 == key3_temp1) && (key3_temp1 == key3_temp2)){
-//		if(key3_temp3 != key3_temp2){
-//			key3_temp3 = key3_temp2;
-//			if(key3_temp2 == PRESS_STATE){
-//				buttonFlag3 = 3;
-//				HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_2); // DEBUG
-//			}
-//		}
-//	}
+	key3_temp0 = key3_temp1;
+	key3_temp1 = key3_temp2;
+	key3_temp2 = HAL_GPIO_ReadPin(BUTTON_3_GPIO_Port, BUTTON_3_Pin);
+	if((key3_temp0 == key3_temp1) && (key3_temp1 == key3_temp2)){
+		if(key3_temp3 != key3_temp2){
+			key3_temp3 = key3_temp2;
+			if(key3_temp2 == PRESS_STATE){
+				buttonFlag3 = 1;
+				HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_2); // DEBUG
+			}
+		}
+		else{
+			timePress--;
+			if(timePress <= 0){
+				key3_temp3 = NORMAL_STATE;
+				timePress = 200;
+			}
+		}
+	}
 }
-int isButtonPress(){
+int isButtonPress1(){
 	if(buttonFlag1 == 1){
 		buttonFlag1 = 0;
 		return 1;
 	}
-	if(buttonFlag2 == 2){
-		buttonFlag2 = 0;
-		return 2;
+	return 0;
+}
+int isButtonPress2(){
+	if(buttonFlag2 == 1){
+		buttonFlag2 =0;
+		return 1;
 	}
-//	if(buttonFlag3 == 3){
-//		buttonFlag3 = 0;
-//		return 3;
-//	}
+	return 0;
+}
+int isButtonPress3(){
+	if(buttonFlag3 == 1){
+		buttonFlag3 = 0;
+		return 1;
+	}
 	return 0;
 }
 

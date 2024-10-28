@@ -7,10 +7,11 @@
 C_SRCS += \
 ../Core/Src/button.c \
 ../Core/Src/fsm_auto.c \
+../Core/Src/fsm_manual.c \
+../Core/Src/fsm_setting.c \
 ../Core/Src/global.c \
 ../Core/Src/led_display.c \
 ../Core/Src/main.c \
-../Core/Src/setTimeTraffic.c \
 ../Core/Src/stm32f1xx_hal_msp.c \
 ../Core/Src/stm32f1xx_it.c \
 ../Core/Src/syscalls.c \
@@ -21,10 +22,11 @@ C_SRCS += \
 OBJS += \
 ./Core/Src/button.o \
 ./Core/Src/fsm_auto.o \
+./Core/Src/fsm_manual.o \
+./Core/Src/fsm_setting.o \
 ./Core/Src/global.o \
 ./Core/Src/led_display.o \
 ./Core/Src/main.o \
-./Core/Src/setTimeTraffic.o \
 ./Core/Src/stm32f1xx_hal_msp.o \
 ./Core/Src/stm32f1xx_it.o \
 ./Core/Src/syscalls.o \
@@ -35,10 +37,11 @@ OBJS += \
 C_DEPS += \
 ./Core/Src/button.d \
 ./Core/Src/fsm_auto.d \
+./Core/Src/fsm_manual.d \
+./Core/Src/fsm_setting.d \
 ./Core/Src/global.d \
 ./Core/Src/led_display.d \
 ./Core/Src/main.d \
-./Core/Src/setTimeTraffic.d \
 ./Core/Src/stm32f1xx_hal_msp.d \
 ./Core/Src/stm32f1xx_it.d \
 ./Core/Src/syscalls.d \

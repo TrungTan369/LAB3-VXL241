@@ -6,14 +6,17 @@
  */
 #include "fsm_auto.h"
 
-
 int count0 = 0;
 int count1= 0;
 
 void fsm_auto_run(){
-	if(setting == 1) return;
-	switch (status_0) {   // LINE 1
-		case init:
+	// ---------- CHECK MANUAL (HIGHEST PRIORITY) ---------------
+	if(manual_mode == 1) return;
+	// ------ CHECK SETTING -------------
+	if(setting_mode == 1) return;
+	// ---------- AUTO RUN ---------------------
+	switch (STATUS_LINE1) {   // LINE 1
+		case auto_init:
 			HAL_GPIO_WritePin(R0_GPIO_Port, R0_Pin, RESET);
 			HAL_GPIO_WritePin(Y0_GPIO_Port, Y0_Pin, RESET);
 			HAL_GPIO_WritePin(G0_GPIO_Port, G0_Pin, RESET);
@@ -22,9 +25,9 @@ void fsm_auto_run(){
 			HAL_GPIO_WritePin(Y1_GPIO_Port, Y1_Pin, RESET);
 			HAL_GPIO_WritePin(G1_GPIO_Port, G1_Pin, RESET);
 
-			status_0 = red;
+			STATUS_LINE1 = red;
 			count0 = timeRed/1000;
-			status_1 = green;
+			STATUS_LINE2 = green;
 			count1 = timeGreen/1000;
 			updateClockBuffer(count0, count1);
 			setTimer(0, timeRed);
@@ -33,11 +36,11 @@ void fsm_auto_run(){
 			setTimer(3, 250);
 			return;
 		case red:
-			HAL_GPIO_WritePin(R0_GPIO_Port, R0_Pin, SET);
+			HAL_GPIO_WritePin(R0_GPIO_Port, R0_Pin, SETTING_STATE);
 			HAL_GPIO_WritePin(Y0_GPIO_Port, Y0_Pin, RESET);
 			HAL_GPIO_WritePin(G0_GPIO_Port, G0_Pin, RESET);
 			if(flag[0] == 1){
-				status_0 = green;
+				STATUS_LINE1 = green;
 				count0 = timeGreen/1000;
 				updateClockBuffer(count0, count1);
 				setTimer(0, timeGreen);
@@ -46,9 +49,9 @@ void fsm_auto_run(){
 		case green:
 			HAL_GPIO_WritePin(R0_GPIO_Port, R0_Pin, RESET);
 			HAL_GPIO_WritePin(Y0_GPIO_Port, Y0_Pin, RESET);
-			HAL_GPIO_WritePin(G0_GPIO_Port, G0_Pin, SET);
+			HAL_GPIO_WritePin(G0_GPIO_Port, G0_Pin, SETTING_STATE);
 			if(flag[0] == 1){
-				status_0 = yellow;
+				STATUS_LINE1 = yellow;
 				count0 = timeYellow/1000;
 				updateClockBuffer(count0, count1);
 				setTimer(0, timeYellow);
@@ -56,10 +59,10 @@ void fsm_auto_run(){
 			break;
 		case yellow:
 			HAL_GPIO_WritePin(R0_GPIO_Port, R0_Pin, RESET);
-			HAL_GPIO_WritePin(Y0_GPIO_Port, Y0_Pin, SET);
+			HAL_GPIO_WritePin(Y0_GPIO_Port, Y0_Pin, SETTING_STATE);
 			HAL_GPIO_WritePin(G0_GPIO_Port, G0_Pin, RESET);
 			if(flag[0] == 1){
-				status_0 = red;
+				STATUS_LINE1 = red;
 				count0 = timeRed/1000;
 				updateClockBuffer(count0, count1);
 				setTimer(0, timeRed);
@@ -68,13 +71,13 @@ void fsm_auto_run(){
 		default:
 			break;
 	}
-	switch (status_1) {  // LINE 2
+	switch (STATUS_LINE2) {  // LINE 2
 		case red:
 			HAL_GPIO_WritePin(R1_GPIO_Port, R1_Pin, SET);
 			HAL_GPIO_WritePin(Y1_GPIO_Port, Y1_Pin, RESET);
 			HAL_GPIO_WritePin(G1_GPIO_Port, G1_Pin, RESET);
 			if(flag[1] == 1){
-				status_1 = green;
+				STATUS_LINE2 = green;
 				count1 = timeGreen/1000;
 				updateClockBuffer(count0, count1);
 				setTimer(1, timeGreen);
@@ -85,7 +88,7 @@ void fsm_auto_run(){
 			HAL_GPIO_WritePin(Y1_GPIO_Port, Y1_Pin, RESET);
 			HAL_GPIO_WritePin(G1_GPIO_Port, G1_Pin, SET);
 			if(flag[1] == 1){
-				status_1 = yellow;
+				STATUS_LINE2 = yellow;
 				count1 = timeYellow/1000;
 				updateClockBuffer(count0, count1);
 				setTimer(1, timeYellow);
@@ -96,13 +99,11 @@ void fsm_auto_run(){
 			HAL_GPIO_WritePin(Y1_GPIO_Port, Y1_Pin, SET);
 			HAL_GPIO_WritePin(G1_GPIO_Port, G1_Pin, RESET);
 			if(flag[1] == 1){
-				status_1 = red;
+				STATUS_LINE2 = red;
 				count1 = timeRed/1000;
 				updateClockBuffer(count0, count1);
 				setTimer(1, timeRed);
 			}
-			break;
-		case stop:
 			break;
 		default:
 			break;
@@ -115,7 +116,6 @@ void fsm_auto_run(){
 	if(flag[2] == 1){
 		setTimer(2, 1000);
 		count0 --; count1 --;
-		//HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_2);
 		updateClockBuffer(count0, count1);
 	}
 }

@@ -21,9 +21,8 @@
 #include "main.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-//#include "global.h"
-#include "fsm_auto.h"
-#include "setTimeTraffic.h"
+#include "global.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -98,8 +97,8 @@ int main(void)
   while (1)
   {
 	  fsm_auto_run();
+	  fsm_manual();
 	  fsm_setting();
-
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
